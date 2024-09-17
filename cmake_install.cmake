@@ -1,4 +1,4 @@
-# Install script for directory: /home/atk/linux/nerual/ncnn/benchmark
+# Install script for directory: /home/atk/linux/nerual/ncnn/examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
