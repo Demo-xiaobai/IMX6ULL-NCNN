@@ -78,6 +78,28 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -100,38 +122,16 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(CMAKE_COMMAND) -E cmake_progress_start /home/atk/linux/nerual/ncnn/build-imx6ull/CMakeFiles /home/atk/linux/nerual/ncnn/build-imx6ull/benchmark/CMakeFiles/progress.marks
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 benchmark/all
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(CMAKE_COMMAND) -E cmake_progress_start /home/atk/linux/nerual/ncnn/build-imx6ull/CMakeFiles /home/atk/linux/nerual/ncnn/build-imx6ull/examples/CMakeFiles/progress.marks
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/atk/linux/nerual/ncnn/build-imx6ull/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 benchmark/clean
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,12 +141,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 benchmark/preinstall
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 benchmark/preinstall
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -155,46 +155,970 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-benchmark/CMakeFiles/benchncnn.dir/rule:
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 benchmark/CMakeFiles/benchncnn.dir/rule
-.PHONY : benchmark/CMakeFiles/benchncnn.dir/rule
+examples/CMakeFiles/scrfd_crowdhuman.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/scrfd_crowdhuman.dir/rule
+.PHONY : examples/CMakeFiles/scrfd_crowdhuman.dir/rule
 
 # Convenience name for target.
-benchncnn: benchmark/CMakeFiles/benchncnn.dir/rule
+scrfd_crowdhuman: examples/CMakeFiles/scrfd_crowdhuman.dir/rule
 
-.PHONY : benchncnn
+.PHONY : scrfd_crowdhuman
 
 # fast build rule for target.
-benchncnn/fast:
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f benchmark/CMakeFiles/benchncnn.dir/build.make benchmark/CMakeFiles/benchncnn.dir/build
-.PHONY : benchncnn/fast
+scrfd_crowdhuman/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd_crowdhuman.dir/build.make examples/CMakeFiles/scrfd_crowdhuman.dir/build
+.PHONY : scrfd_crowdhuman/fast
 
-benchncnn.o: benchncnn.cpp.o
+# Convenience name for target.
+examples/CMakeFiles/yolov5_pnnx.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolov5_pnnx.dir/rule
+.PHONY : examples/CMakeFiles/yolov5_pnnx.dir/rule
 
-.PHONY : benchncnn.o
+# Convenience name for target.
+yolov5_pnnx: examples/CMakeFiles/yolov5_pnnx.dir/rule
+
+.PHONY : yolov5_pnnx
+
+# fast build rule for target.
+yolov5_pnnx/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5_pnnx.dir/build.make examples/CMakeFiles/yolov5_pnnx.dir/build
+.PHONY : yolov5_pnnx/fast
+
+# Convenience name for target.
+examples/CMakeFiles/yolov7.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolov7.dir/rule
+.PHONY : examples/CMakeFiles/yolov7.dir/rule
+
+# Convenience name for target.
+yolov7: examples/CMakeFiles/yolov7.dir/rule
+
+.PHONY : yolov7
+
+# fast build rule for target.
+yolov7/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7.dir/build.make examples/CMakeFiles/yolov7.dir/build
+.PHONY : yolov7/fast
+
+# Convenience name for target.
+examples/CMakeFiles/yolov2.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolov2.dir/rule
+.PHONY : examples/CMakeFiles/yolov2.dir/rule
+
+# Convenience name for target.
+yolov2: examples/CMakeFiles/yolov2.dir/rule
+
+.PHONY : yolov2
+
+# fast build rule for target.
+yolov2/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov2.dir/build.make examples/CMakeFiles/yolov2.dir/build
+.PHONY : yolov2/fast
+
+# Convenience name for target.
+examples/CMakeFiles/mobilenetv2ssdlite.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/mobilenetv2ssdlite.dir/rule
+.PHONY : examples/CMakeFiles/mobilenetv2ssdlite.dir/rule
+
+# Convenience name for target.
+mobilenetv2ssdlite: examples/CMakeFiles/mobilenetv2ssdlite.dir/rule
+
+.PHONY : mobilenetv2ssdlite
+
+# fast build rule for target.
+mobilenetv2ssdlite/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetv2ssdlite.dir/build.make examples/CMakeFiles/mobilenetv2ssdlite.dir/build
+.PHONY : mobilenetv2ssdlite/fast
+
+# Convenience name for target.
+examples/CMakeFiles/nanodetplus_pnnx.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/nanodetplus_pnnx.dir/rule
+.PHONY : examples/CMakeFiles/nanodetplus_pnnx.dir/rule
+
+# Convenience name for target.
+nanodetplus_pnnx: examples/CMakeFiles/nanodetplus_pnnx.dir/rule
+
+.PHONY : nanodetplus_pnnx
+
+# fast build rule for target.
+nanodetplus_pnnx/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodetplus_pnnx.dir/build.make examples/CMakeFiles/nanodetplus_pnnx.dir/build
+.PHONY : nanodetplus_pnnx/fast
+
+# Convenience name for target.
+examples/CMakeFiles/squeezenet.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/squeezenet.dir/rule
+.PHONY : examples/CMakeFiles/squeezenet.dir/rule
+
+# Convenience name for target.
+squeezenet: examples/CMakeFiles/squeezenet.dir/rule
+
+.PHONY : squeezenet
+
+# fast build rule for target.
+squeezenet/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet.dir/build.make examples/CMakeFiles/squeezenet.dir/build
+.PHONY : squeezenet/fast
+
+# Convenience name for target.
+examples/CMakeFiles/rfcn.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/rfcn.dir/rule
+.PHONY : examples/CMakeFiles/rfcn.dir/rule
+
+# Convenience name for target.
+rfcn: examples/CMakeFiles/rfcn.dir/rule
+
+.PHONY : rfcn
+
+# fast build rule for target.
+rfcn/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/rfcn.dir/build.make examples/CMakeFiles/rfcn.dir/build
+.PHONY : rfcn/fast
+
+# Convenience name for target.
+examples/CMakeFiles/yolov7_pnnx.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolov7_pnnx.dir/rule
+.PHONY : examples/CMakeFiles/yolov7_pnnx.dir/rule
+
+# Convenience name for target.
+yolov7_pnnx: examples/CMakeFiles/yolov7_pnnx.dir/rule
+
+.PHONY : yolov7_pnnx
+
+# fast build rule for target.
+yolov7_pnnx/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7_pnnx.dir/build.make examples/CMakeFiles/yolov7_pnnx.dir/build
+.PHONY : yolov7_pnnx/fast
+
+# Convenience name for target.
+examples/CMakeFiles/mobilenetssd.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/mobilenetssd.dir/rule
+.PHONY : examples/CMakeFiles/mobilenetssd.dir/rule
+
+# Convenience name for target.
+mobilenetssd: examples/CMakeFiles/mobilenetssd.dir/rule
+
+.PHONY : mobilenetssd
+
+# fast build rule for target.
+mobilenetssd/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetssd.dir/build.make examples/CMakeFiles/mobilenetssd.dir/build
+.PHONY : mobilenetssd/fast
+
+# Convenience name for target.
+examples/CMakeFiles/yolov3.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolov3.dir/rule
+.PHONY : examples/CMakeFiles/yolov3.dir/rule
+
+# Convenience name for target.
+yolov3: examples/CMakeFiles/yolov3.dir/rule
+
+.PHONY : yolov3
+
+# fast build rule for target.
+yolov3/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov3.dir/build.make examples/CMakeFiles/yolov3.dir/build
+.PHONY : yolov3/fast
+
+# Convenience name for target.
+examples/CMakeFiles/yolact.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolact.dir/rule
+.PHONY : examples/CMakeFiles/yolact.dir/rule
+
+# Convenience name for target.
+yolact: examples/CMakeFiles/yolact.dir/rule
+
+.PHONY : yolact
+
+# fast build rule for target.
+yolact/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolact.dir/build.make examples/CMakeFiles/yolact.dir/build
+.PHONY : yolact/fast
+
+# Convenience name for target.
+examples/CMakeFiles/fasterrcnn.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/fasterrcnn.dir/rule
+.PHONY : examples/CMakeFiles/fasterrcnn.dir/rule
+
+# Convenience name for target.
+fasterrcnn: examples/CMakeFiles/fasterrcnn.dir/rule
+
+.PHONY : fasterrcnn
+
+# fast build rule for target.
+fasterrcnn/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/fasterrcnn.dir/build.make examples/CMakeFiles/fasterrcnn.dir/build
+.PHONY : fasterrcnn/fast
+
+# Convenience name for target.
+examples/CMakeFiles/yolox.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolox.dir/rule
+.PHONY : examples/CMakeFiles/yolox.dir/rule
+
+# Convenience name for target.
+yolox: examples/CMakeFiles/yolox.dir/rule
+
+.PHONY : yolox
+
+# fast build rule for target.
+yolox/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolox.dir/build.make examples/CMakeFiles/yolox.dir/build
+.PHONY : yolox/fast
+
+# Convenience name for target.
+examples/CMakeFiles/squeezenet_c_api.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/squeezenet_c_api.dir/rule
+.PHONY : examples/CMakeFiles/squeezenet_c_api.dir/rule
+
+# Convenience name for target.
+squeezenet_c_api: examples/CMakeFiles/squeezenet_c_api.dir/rule
+
+.PHONY : squeezenet_c_api
+
+# fast build rule for target.
+squeezenet_c_api/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet_c_api.dir/build.make examples/CMakeFiles/squeezenet_c_api.dir/build
+.PHONY : squeezenet_c_api/fast
+
+# Convenience name for target.
+examples/CMakeFiles/squeezenetssd.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/squeezenetssd.dir/rule
+.PHONY : examples/CMakeFiles/squeezenetssd.dir/rule
+
+# Convenience name for target.
+squeezenetssd: examples/CMakeFiles/squeezenetssd.dir/rule
+
+.PHONY : squeezenetssd
+
+# fast build rule for target.
+squeezenetssd/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenetssd.dir/build.make examples/CMakeFiles/squeezenetssd.dir/build
+.PHONY : squeezenetssd/fast
+
+# Convenience name for target.
+examples/CMakeFiles/retinaface.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/retinaface.dir/rule
+.PHONY : examples/CMakeFiles/retinaface.dir/rule
+
+# Convenience name for target.
+retinaface: examples/CMakeFiles/retinaface.dir/rule
+
+.PHONY : retinaface
+
+# fast build rule for target.
+retinaface/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/retinaface.dir/build.make examples/CMakeFiles/retinaface.dir/build
+.PHONY : retinaface/fast
+
+# Convenience name for target.
+examples/CMakeFiles/shufflenetv2.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/shufflenetv2.dir/rule
+.PHONY : examples/CMakeFiles/shufflenetv2.dir/rule
+
+# Convenience name for target.
+shufflenetv2: examples/CMakeFiles/shufflenetv2.dir/rule
+
+.PHONY : shufflenetv2
+
+# fast build rule for target.
+shufflenetv2/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/shufflenetv2.dir/build.make examples/CMakeFiles/shufflenetv2.dir/build
+.PHONY : shufflenetv2/fast
+
+# Convenience name for target.
+examples/CMakeFiles/yolov5.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/yolov5.dir/rule
+.PHONY : examples/CMakeFiles/yolov5.dir/rule
+
+# Convenience name for target.
+yolov5: examples/CMakeFiles/yolov5.dir/rule
+
+.PHONY : yolov5
+
+# fast build rule for target.
+yolov5/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5.dir/build.make examples/CMakeFiles/yolov5.dir/build
+.PHONY : yolov5/fast
+
+# Convenience name for target.
+examples/CMakeFiles/scrfd.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/scrfd.dir/rule
+.PHONY : examples/CMakeFiles/scrfd.dir/rule
+
+# Convenience name for target.
+scrfd: examples/CMakeFiles/scrfd.dir/rule
+
+.PHONY : scrfd
+
+# fast build rule for target.
+scrfd/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd.dir/build.make examples/CMakeFiles/scrfd.dir/build
+.PHONY : scrfd/fast
+
+# Convenience name for target.
+examples/CMakeFiles/peleenetssd_seg.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/peleenetssd_seg.dir/rule
+.PHONY : examples/CMakeFiles/peleenetssd_seg.dir/rule
+
+# Convenience name for target.
+peleenetssd_seg: examples/CMakeFiles/peleenetssd_seg.dir/rule
+
+.PHONY : peleenetssd_seg
+
+# fast build rule for target.
+peleenetssd_seg/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/peleenetssd_seg.dir/build.make examples/CMakeFiles/peleenetssd_seg.dir/build
+.PHONY : peleenetssd_seg/fast
+
+# Convenience name for target.
+examples/CMakeFiles/simplepose.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/simplepose.dir/rule
+.PHONY : examples/CMakeFiles/simplepose.dir/rule
+
+# Convenience name for target.
+simplepose: examples/CMakeFiles/simplepose.dir/rule
+
+.PHONY : simplepose
+
+# fast build rule for target.
+simplepose/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/simplepose.dir/build.make examples/CMakeFiles/simplepose.dir/build
+.PHONY : simplepose/fast
+
+# Convenience name for target.
+examples/CMakeFiles/nanodet.dir/rule:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/nanodet.dir/rule
+.PHONY : examples/CMakeFiles/nanodet.dir/rule
+
+# Convenience name for target.
+nanodet: examples/CMakeFiles/nanodet.dir/rule
+
+.PHONY : nanodet
+
+# fast build rule for target.
+nanodet/fast:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodet.dir/build.make examples/CMakeFiles/nanodet.dir/build
+.PHONY : nanodet/fast
+
+fasterrcnn.o: fasterrcnn.cpp.o
+
+.PHONY : fasterrcnn.o
 
 # target to build an object file
-benchncnn.cpp.o:
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f benchmark/CMakeFiles/benchncnn.dir/build.make benchmark/CMakeFiles/benchncnn.dir/benchncnn.cpp.o
-.PHONY : benchncnn.cpp.o
+fasterrcnn.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/fasterrcnn.dir/build.make examples/CMakeFiles/fasterrcnn.dir/fasterrcnn.cpp.o
+.PHONY : fasterrcnn.cpp.o
 
-benchncnn.i: benchncnn.cpp.i
+fasterrcnn.i: fasterrcnn.cpp.i
 
-.PHONY : benchncnn.i
+.PHONY : fasterrcnn.i
 
 # target to preprocess a source file
-benchncnn.cpp.i:
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f benchmark/CMakeFiles/benchncnn.dir/build.make benchmark/CMakeFiles/benchncnn.dir/benchncnn.cpp.i
-.PHONY : benchncnn.cpp.i
+fasterrcnn.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/fasterrcnn.dir/build.make examples/CMakeFiles/fasterrcnn.dir/fasterrcnn.cpp.i
+.PHONY : fasterrcnn.cpp.i
 
-benchncnn.s: benchncnn.cpp.s
+fasterrcnn.s: fasterrcnn.cpp.s
 
-.PHONY : benchncnn.s
+.PHONY : fasterrcnn.s
 
 # target to generate assembly for a file
-benchncnn.cpp.s:
-	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f benchmark/CMakeFiles/benchncnn.dir/build.make benchmark/CMakeFiles/benchncnn.dir/benchncnn.cpp.s
-.PHONY : benchncnn.cpp.s
+fasterrcnn.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/fasterrcnn.dir/build.make examples/CMakeFiles/fasterrcnn.dir/fasterrcnn.cpp.s
+.PHONY : fasterrcnn.cpp.s
+
+mobilenetssd.o: mobilenetssd.cpp.o
+
+.PHONY : mobilenetssd.o
+
+# target to build an object file
+mobilenetssd.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetssd.dir/build.make examples/CMakeFiles/mobilenetssd.dir/mobilenetssd.cpp.o
+.PHONY : mobilenetssd.cpp.o
+
+mobilenetssd.i: mobilenetssd.cpp.i
+
+.PHONY : mobilenetssd.i
+
+# target to preprocess a source file
+mobilenetssd.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetssd.dir/build.make examples/CMakeFiles/mobilenetssd.dir/mobilenetssd.cpp.i
+.PHONY : mobilenetssd.cpp.i
+
+mobilenetssd.s: mobilenetssd.cpp.s
+
+.PHONY : mobilenetssd.s
+
+# target to generate assembly for a file
+mobilenetssd.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetssd.dir/build.make examples/CMakeFiles/mobilenetssd.dir/mobilenetssd.cpp.s
+.PHONY : mobilenetssd.cpp.s
+
+mobilenetv2ssdlite.o: mobilenetv2ssdlite.cpp.o
+
+.PHONY : mobilenetv2ssdlite.o
+
+# target to build an object file
+mobilenetv2ssdlite.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetv2ssdlite.dir/build.make examples/CMakeFiles/mobilenetv2ssdlite.dir/mobilenetv2ssdlite.cpp.o
+.PHONY : mobilenetv2ssdlite.cpp.o
+
+mobilenetv2ssdlite.i: mobilenetv2ssdlite.cpp.i
+
+.PHONY : mobilenetv2ssdlite.i
+
+# target to preprocess a source file
+mobilenetv2ssdlite.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetv2ssdlite.dir/build.make examples/CMakeFiles/mobilenetv2ssdlite.dir/mobilenetv2ssdlite.cpp.i
+.PHONY : mobilenetv2ssdlite.cpp.i
+
+mobilenetv2ssdlite.s: mobilenetv2ssdlite.cpp.s
+
+.PHONY : mobilenetv2ssdlite.s
+
+# target to generate assembly for a file
+mobilenetv2ssdlite.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/mobilenetv2ssdlite.dir/build.make examples/CMakeFiles/mobilenetv2ssdlite.dir/mobilenetv2ssdlite.cpp.s
+.PHONY : mobilenetv2ssdlite.cpp.s
+
+nanodet.o: nanodet.cpp.o
+
+.PHONY : nanodet.o
+
+# target to build an object file
+nanodet.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodet.dir/build.make examples/CMakeFiles/nanodet.dir/nanodet.cpp.o
+.PHONY : nanodet.cpp.o
+
+nanodet.i: nanodet.cpp.i
+
+.PHONY : nanodet.i
+
+# target to preprocess a source file
+nanodet.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodet.dir/build.make examples/CMakeFiles/nanodet.dir/nanodet.cpp.i
+.PHONY : nanodet.cpp.i
+
+nanodet.s: nanodet.cpp.s
+
+.PHONY : nanodet.s
+
+# target to generate assembly for a file
+nanodet.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodet.dir/build.make examples/CMakeFiles/nanodet.dir/nanodet.cpp.s
+.PHONY : nanodet.cpp.s
+
+nanodetplus_pnnx.o: nanodetplus_pnnx.cpp.o
+
+.PHONY : nanodetplus_pnnx.o
+
+# target to build an object file
+nanodetplus_pnnx.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodetplus_pnnx.dir/build.make examples/CMakeFiles/nanodetplus_pnnx.dir/nanodetplus_pnnx.cpp.o
+.PHONY : nanodetplus_pnnx.cpp.o
+
+nanodetplus_pnnx.i: nanodetplus_pnnx.cpp.i
+
+.PHONY : nanodetplus_pnnx.i
+
+# target to preprocess a source file
+nanodetplus_pnnx.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodetplus_pnnx.dir/build.make examples/CMakeFiles/nanodetplus_pnnx.dir/nanodetplus_pnnx.cpp.i
+.PHONY : nanodetplus_pnnx.cpp.i
+
+nanodetplus_pnnx.s: nanodetplus_pnnx.cpp.s
+
+.PHONY : nanodetplus_pnnx.s
+
+# target to generate assembly for a file
+nanodetplus_pnnx.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/nanodetplus_pnnx.dir/build.make examples/CMakeFiles/nanodetplus_pnnx.dir/nanodetplus_pnnx.cpp.s
+.PHONY : nanodetplus_pnnx.cpp.s
+
+peleenetssd_seg.o: peleenetssd_seg.cpp.o
+
+.PHONY : peleenetssd_seg.o
+
+# target to build an object file
+peleenetssd_seg.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/peleenetssd_seg.dir/build.make examples/CMakeFiles/peleenetssd_seg.dir/peleenetssd_seg.cpp.o
+.PHONY : peleenetssd_seg.cpp.o
+
+peleenetssd_seg.i: peleenetssd_seg.cpp.i
+
+.PHONY : peleenetssd_seg.i
+
+# target to preprocess a source file
+peleenetssd_seg.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/peleenetssd_seg.dir/build.make examples/CMakeFiles/peleenetssd_seg.dir/peleenetssd_seg.cpp.i
+.PHONY : peleenetssd_seg.cpp.i
+
+peleenetssd_seg.s: peleenetssd_seg.cpp.s
+
+.PHONY : peleenetssd_seg.s
+
+# target to generate assembly for a file
+peleenetssd_seg.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/peleenetssd_seg.dir/build.make examples/CMakeFiles/peleenetssd_seg.dir/peleenetssd_seg.cpp.s
+.PHONY : peleenetssd_seg.cpp.s
+
+retinaface.o: retinaface.cpp.o
+
+.PHONY : retinaface.o
+
+# target to build an object file
+retinaface.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/retinaface.dir/build.make examples/CMakeFiles/retinaface.dir/retinaface.cpp.o
+.PHONY : retinaface.cpp.o
+
+retinaface.i: retinaface.cpp.i
+
+.PHONY : retinaface.i
+
+# target to preprocess a source file
+retinaface.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/retinaface.dir/build.make examples/CMakeFiles/retinaface.dir/retinaface.cpp.i
+.PHONY : retinaface.cpp.i
+
+retinaface.s: retinaface.cpp.s
+
+.PHONY : retinaface.s
+
+# target to generate assembly for a file
+retinaface.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/retinaface.dir/build.make examples/CMakeFiles/retinaface.dir/retinaface.cpp.s
+.PHONY : retinaface.cpp.s
+
+rfcn.o: rfcn.cpp.o
+
+.PHONY : rfcn.o
+
+# target to build an object file
+rfcn.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/rfcn.dir/build.make examples/CMakeFiles/rfcn.dir/rfcn.cpp.o
+.PHONY : rfcn.cpp.o
+
+rfcn.i: rfcn.cpp.i
+
+.PHONY : rfcn.i
+
+# target to preprocess a source file
+rfcn.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/rfcn.dir/build.make examples/CMakeFiles/rfcn.dir/rfcn.cpp.i
+.PHONY : rfcn.cpp.i
+
+rfcn.s: rfcn.cpp.s
+
+.PHONY : rfcn.s
+
+# target to generate assembly for a file
+rfcn.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/rfcn.dir/build.make examples/CMakeFiles/rfcn.dir/rfcn.cpp.s
+.PHONY : rfcn.cpp.s
+
+scrfd.o: scrfd.cpp.o
+
+.PHONY : scrfd.o
+
+# target to build an object file
+scrfd.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd.dir/build.make examples/CMakeFiles/scrfd.dir/scrfd.cpp.o
+.PHONY : scrfd.cpp.o
+
+scrfd.i: scrfd.cpp.i
+
+.PHONY : scrfd.i
+
+# target to preprocess a source file
+scrfd.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd.dir/build.make examples/CMakeFiles/scrfd.dir/scrfd.cpp.i
+.PHONY : scrfd.cpp.i
+
+scrfd.s: scrfd.cpp.s
+
+.PHONY : scrfd.s
+
+# target to generate assembly for a file
+scrfd.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd.dir/build.make examples/CMakeFiles/scrfd.dir/scrfd.cpp.s
+.PHONY : scrfd.cpp.s
+
+scrfd_crowdhuman.o: scrfd_crowdhuman.cpp.o
+
+.PHONY : scrfd_crowdhuman.o
+
+# target to build an object file
+scrfd_crowdhuman.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd_crowdhuman.dir/build.make examples/CMakeFiles/scrfd_crowdhuman.dir/scrfd_crowdhuman.cpp.o
+.PHONY : scrfd_crowdhuman.cpp.o
+
+scrfd_crowdhuman.i: scrfd_crowdhuman.cpp.i
+
+.PHONY : scrfd_crowdhuman.i
+
+# target to preprocess a source file
+scrfd_crowdhuman.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd_crowdhuman.dir/build.make examples/CMakeFiles/scrfd_crowdhuman.dir/scrfd_crowdhuman.cpp.i
+.PHONY : scrfd_crowdhuman.cpp.i
+
+scrfd_crowdhuman.s: scrfd_crowdhuman.cpp.s
+
+.PHONY : scrfd_crowdhuman.s
+
+# target to generate assembly for a file
+scrfd_crowdhuman.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/scrfd_crowdhuman.dir/build.make examples/CMakeFiles/scrfd_crowdhuman.dir/scrfd_crowdhuman.cpp.s
+.PHONY : scrfd_crowdhuman.cpp.s
+
+shufflenetv2.o: shufflenetv2.cpp.o
+
+.PHONY : shufflenetv2.o
+
+# target to build an object file
+shufflenetv2.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/shufflenetv2.dir/build.make examples/CMakeFiles/shufflenetv2.dir/shufflenetv2.cpp.o
+.PHONY : shufflenetv2.cpp.o
+
+shufflenetv2.i: shufflenetv2.cpp.i
+
+.PHONY : shufflenetv2.i
+
+# target to preprocess a source file
+shufflenetv2.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/shufflenetv2.dir/build.make examples/CMakeFiles/shufflenetv2.dir/shufflenetv2.cpp.i
+.PHONY : shufflenetv2.cpp.i
+
+shufflenetv2.s: shufflenetv2.cpp.s
+
+.PHONY : shufflenetv2.s
+
+# target to generate assembly for a file
+shufflenetv2.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/shufflenetv2.dir/build.make examples/CMakeFiles/shufflenetv2.dir/shufflenetv2.cpp.s
+.PHONY : shufflenetv2.cpp.s
+
+simplepose.o: simplepose.cpp.o
+
+.PHONY : simplepose.o
+
+# target to build an object file
+simplepose.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/simplepose.dir/build.make examples/CMakeFiles/simplepose.dir/simplepose.cpp.o
+.PHONY : simplepose.cpp.o
+
+simplepose.i: simplepose.cpp.i
+
+.PHONY : simplepose.i
+
+# target to preprocess a source file
+simplepose.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/simplepose.dir/build.make examples/CMakeFiles/simplepose.dir/simplepose.cpp.i
+.PHONY : simplepose.cpp.i
+
+simplepose.s: simplepose.cpp.s
+
+.PHONY : simplepose.s
+
+# target to generate assembly for a file
+simplepose.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/simplepose.dir/build.make examples/CMakeFiles/simplepose.dir/simplepose.cpp.s
+.PHONY : simplepose.cpp.s
+
+squeezenet.o: squeezenet.cpp.o
+
+.PHONY : squeezenet.o
+
+# target to build an object file
+squeezenet.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet.dir/build.make examples/CMakeFiles/squeezenet.dir/squeezenet.cpp.o
+.PHONY : squeezenet.cpp.o
+
+squeezenet.i: squeezenet.cpp.i
+
+.PHONY : squeezenet.i
+
+# target to preprocess a source file
+squeezenet.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet.dir/build.make examples/CMakeFiles/squeezenet.dir/squeezenet.cpp.i
+.PHONY : squeezenet.cpp.i
+
+squeezenet.s: squeezenet.cpp.s
+
+.PHONY : squeezenet.s
+
+# target to generate assembly for a file
+squeezenet.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet.dir/build.make examples/CMakeFiles/squeezenet.dir/squeezenet.cpp.s
+.PHONY : squeezenet.cpp.s
+
+squeezenet_c_api.o: squeezenet_c_api.cpp.o
+
+.PHONY : squeezenet_c_api.o
+
+# target to build an object file
+squeezenet_c_api.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet_c_api.dir/build.make examples/CMakeFiles/squeezenet_c_api.dir/squeezenet_c_api.cpp.o
+.PHONY : squeezenet_c_api.cpp.o
+
+squeezenet_c_api.i: squeezenet_c_api.cpp.i
+
+.PHONY : squeezenet_c_api.i
+
+# target to preprocess a source file
+squeezenet_c_api.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet_c_api.dir/build.make examples/CMakeFiles/squeezenet_c_api.dir/squeezenet_c_api.cpp.i
+.PHONY : squeezenet_c_api.cpp.i
+
+squeezenet_c_api.s: squeezenet_c_api.cpp.s
+
+.PHONY : squeezenet_c_api.s
+
+# target to generate assembly for a file
+squeezenet_c_api.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenet_c_api.dir/build.make examples/CMakeFiles/squeezenet_c_api.dir/squeezenet_c_api.cpp.s
+.PHONY : squeezenet_c_api.cpp.s
+
+squeezenetssd.o: squeezenetssd.cpp.o
+
+.PHONY : squeezenetssd.o
+
+# target to build an object file
+squeezenetssd.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenetssd.dir/build.make examples/CMakeFiles/squeezenetssd.dir/squeezenetssd.cpp.o
+.PHONY : squeezenetssd.cpp.o
+
+squeezenetssd.i: squeezenetssd.cpp.i
+
+.PHONY : squeezenetssd.i
+
+# target to preprocess a source file
+squeezenetssd.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenetssd.dir/build.make examples/CMakeFiles/squeezenetssd.dir/squeezenetssd.cpp.i
+.PHONY : squeezenetssd.cpp.i
+
+squeezenetssd.s: squeezenetssd.cpp.s
+
+.PHONY : squeezenetssd.s
+
+# target to generate assembly for a file
+squeezenetssd.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/squeezenetssd.dir/build.make examples/CMakeFiles/squeezenetssd.dir/squeezenetssd.cpp.s
+.PHONY : squeezenetssd.cpp.s
+
+yolact.o: yolact.cpp.o
+
+.PHONY : yolact.o
+
+# target to build an object file
+yolact.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolact.dir/build.make examples/CMakeFiles/yolact.dir/yolact.cpp.o
+.PHONY : yolact.cpp.o
+
+yolact.i: yolact.cpp.i
+
+.PHONY : yolact.i
+
+# target to preprocess a source file
+yolact.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolact.dir/build.make examples/CMakeFiles/yolact.dir/yolact.cpp.i
+.PHONY : yolact.cpp.i
+
+yolact.s: yolact.cpp.s
+
+.PHONY : yolact.s
+
+# target to generate assembly for a file
+yolact.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolact.dir/build.make examples/CMakeFiles/yolact.dir/yolact.cpp.s
+.PHONY : yolact.cpp.s
+
+yolov2.o: yolov2.cpp.o
+
+.PHONY : yolov2.o
+
+# target to build an object file
+yolov2.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov2.dir/build.make examples/CMakeFiles/yolov2.dir/yolov2.cpp.o
+.PHONY : yolov2.cpp.o
+
+yolov2.i: yolov2.cpp.i
+
+.PHONY : yolov2.i
+
+# target to preprocess a source file
+yolov2.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov2.dir/build.make examples/CMakeFiles/yolov2.dir/yolov2.cpp.i
+.PHONY : yolov2.cpp.i
+
+yolov2.s: yolov2.cpp.s
+
+.PHONY : yolov2.s
+
+# target to generate assembly for a file
+yolov2.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov2.dir/build.make examples/CMakeFiles/yolov2.dir/yolov2.cpp.s
+.PHONY : yolov2.cpp.s
+
+yolov3.o: yolov3.cpp.o
+
+.PHONY : yolov3.o
+
+# target to build an object file
+yolov3.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov3.dir/build.make examples/CMakeFiles/yolov3.dir/yolov3.cpp.o
+.PHONY : yolov3.cpp.o
+
+yolov3.i: yolov3.cpp.i
+
+.PHONY : yolov3.i
+
+# target to preprocess a source file
+yolov3.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov3.dir/build.make examples/CMakeFiles/yolov3.dir/yolov3.cpp.i
+.PHONY : yolov3.cpp.i
+
+yolov3.s: yolov3.cpp.s
+
+.PHONY : yolov3.s
+
+# target to generate assembly for a file
+yolov3.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov3.dir/build.make examples/CMakeFiles/yolov3.dir/yolov3.cpp.s
+.PHONY : yolov3.cpp.s
+
+yolov5.o: yolov5.cpp.o
+
+.PHONY : yolov5.o
+
+# target to build an object file
+yolov5.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5.dir/build.make examples/CMakeFiles/yolov5.dir/yolov5.cpp.o
+.PHONY : yolov5.cpp.o
+
+yolov5.i: yolov5.cpp.i
+
+.PHONY : yolov5.i
+
+# target to preprocess a source file
+yolov5.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5.dir/build.make examples/CMakeFiles/yolov5.dir/yolov5.cpp.i
+.PHONY : yolov5.cpp.i
+
+yolov5.s: yolov5.cpp.s
+
+.PHONY : yolov5.s
+
+# target to generate assembly for a file
+yolov5.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5.dir/build.make examples/CMakeFiles/yolov5.dir/yolov5.cpp.s
+.PHONY : yolov5.cpp.s
+
+yolov5_pnnx.o: yolov5_pnnx.cpp.o
+
+.PHONY : yolov5_pnnx.o
+
+# target to build an object file
+yolov5_pnnx.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5_pnnx.dir/build.make examples/CMakeFiles/yolov5_pnnx.dir/yolov5_pnnx.cpp.o
+.PHONY : yolov5_pnnx.cpp.o
+
+yolov5_pnnx.i: yolov5_pnnx.cpp.i
+
+.PHONY : yolov5_pnnx.i
+
+# target to preprocess a source file
+yolov5_pnnx.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5_pnnx.dir/build.make examples/CMakeFiles/yolov5_pnnx.dir/yolov5_pnnx.cpp.i
+.PHONY : yolov5_pnnx.cpp.i
+
+yolov5_pnnx.s: yolov5_pnnx.cpp.s
+
+.PHONY : yolov5_pnnx.s
+
+# target to generate assembly for a file
+yolov5_pnnx.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov5_pnnx.dir/build.make examples/CMakeFiles/yolov5_pnnx.dir/yolov5_pnnx.cpp.s
+.PHONY : yolov5_pnnx.cpp.s
+
+yolov7.o: yolov7.cpp.o
+
+.PHONY : yolov7.o
+
+# target to build an object file
+yolov7.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7.dir/build.make examples/CMakeFiles/yolov7.dir/yolov7.cpp.o
+.PHONY : yolov7.cpp.o
+
+yolov7.i: yolov7.cpp.i
+
+.PHONY : yolov7.i
+
+# target to preprocess a source file
+yolov7.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7.dir/build.make examples/CMakeFiles/yolov7.dir/yolov7.cpp.i
+.PHONY : yolov7.cpp.i
+
+yolov7.s: yolov7.cpp.s
+
+.PHONY : yolov7.s
+
+# target to generate assembly for a file
+yolov7.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7.dir/build.make examples/CMakeFiles/yolov7.dir/yolov7.cpp.s
+.PHONY : yolov7.cpp.s
+
+yolov7_pnnx.o: yolov7_pnnx.cpp.o
+
+.PHONY : yolov7_pnnx.o
+
+# target to build an object file
+yolov7_pnnx.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7_pnnx.dir/build.make examples/CMakeFiles/yolov7_pnnx.dir/yolov7_pnnx.cpp.o
+.PHONY : yolov7_pnnx.cpp.o
+
+yolov7_pnnx.i: yolov7_pnnx.cpp.i
+
+.PHONY : yolov7_pnnx.i
+
+# target to preprocess a source file
+yolov7_pnnx.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7_pnnx.dir/build.make examples/CMakeFiles/yolov7_pnnx.dir/yolov7_pnnx.cpp.i
+.PHONY : yolov7_pnnx.cpp.i
+
+yolov7_pnnx.s: yolov7_pnnx.cpp.s
+
+.PHONY : yolov7_pnnx.s
+
+# target to generate assembly for a file
+yolov7_pnnx.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolov7_pnnx.dir/build.make examples/CMakeFiles/yolov7_pnnx.dir/yolov7_pnnx.cpp.s
+.PHONY : yolov7_pnnx.cpp.s
+
+yolox.o: yolox.cpp.o
+
+.PHONY : yolox.o
+
+# target to build an object file
+yolox.cpp.o:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolox.dir/build.make examples/CMakeFiles/yolox.dir/yolox.cpp.o
+.PHONY : yolox.cpp.o
+
+yolox.i: yolox.cpp.i
+
+.PHONY : yolox.i
+
+# target to preprocess a source file
+yolox.cpp.i:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolox.dir/build.make examples/CMakeFiles/yolox.dir/yolox.cpp.i
+.PHONY : yolox.cpp.i
+
+yolox.s: yolox.cpp.s
+
+.PHONY : yolox.s
+
+# target to generate assembly for a file
+yolox.cpp.s:
+	cd /home/atk/linux/nerual/ncnn/build-imx6ull && $(MAKE) -f examples/CMakeFiles/yolox.dir/build.make examples/CMakeFiles/yolox.dir/yolox.cpp.s
+.PHONY : yolox.cpp.s
 
 # Help Target
 help:
@@ -204,14 +1128,102 @@ help:
 	@echo "... depend"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... rebuild_cache"
-	@echo "... benchncnn"
-	@echo "... install/local"
-	@echo "... install/strip"
+	@echo "... scrfd_crowdhuman"
+	@echo "... yolov5_pnnx"
+	@echo "... yolov7"
+	@echo "... yolov2"
 	@echo "... edit_cache"
-	@echo "... benchncnn.o"
-	@echo "... benchncnn.i"
-	@echo "... benchncnn.s"
+	@echo "... mobilenetv2ssdlite"
+	@echo "... nanodetplus_pnnx"
+	@echo "... squeezenet"
+	@echo "... rfcn"
+	@echo "... yolov7_pnnx"
+	@echo "... mobilenetssd"
+	@echo "... yolov3"
+	@echo "... yolact"
+	@echo "... install/strip"
+	@echo "... fasterrcnn"
+	@echo "... yolox"
+	@echo "... squeezenet_c_api"
+	@echo "... squeezenetssd"
+	@echo "... retinaface"
+	@echo "... rebuild_cache"
+	@echo "... shufflenetv2"
+	@echo "... yolov5"
+	@echo "... scrfd"
+	@echo "... peleenetssd_seg"
+	@echo "... simplepose"
+	@echo "... install/local"
+	@echo "... nanodet"
+	@echo "... fasterrcnn.o"
+	@echo "... fasterrcnn.i"
+	@echo "... fasterrcnn.s"
+	@echo "... mobilenetssd.o"
+	@echo "... mobilenetssd.i"
+	@echo "... mobilenetssd.s"
+	@echo "... mobilenetv2ssdlite.o"
+	@echo "... mobilenetv2ssdlite.i"
+	@echo "... mobilenetv2ssdlite.s"
+	@echo "... nanodet.o"
+	@echo "... nanodet.i"
+	@echo "... nanodet.s"
+	@echo "... nanodetplus_pnnx.o"
+	@echo "... nanodetplus_pnnx.i"
+	@echo "... nanodetplus_pnnx.s"
+	@echo "... peleenetssd_seg.o"
+	@echo "... peleenetssd_seg.i"
+	@echo "... peleenetssd_seg.s"
+	@echo "... retinaface.o"
+	@echo "... retinaface.i"
+	@echo "... retinaface.s"
+	@echo "... rfcn.o"
+	@echo "... rfcn.i"
+	@echo "... rfcn.s"
+	@echo "... scrfd.o"
+	@echo "... scrfd.i"
+	@echo "... scrfd.s"
+	@echo "... scrfd_crowdhuman.o"
+	@echo "... scrfd_crowdhuman.i"
+	@echo "... scrfd_crowdhuman.s"
+	@echo "... shufflenetv2.o"
+	@echo "... shufflenetv2.i"
+	@echo "... shufflenetv2.s"
+	@echo "... simplepose.o"
+	@echo "... simplepose.i"
+	@echo "... simplepose.s"
+	@echo "... squeezenet.o"
+	@echo "... squeezenet.i"
+	@echo "... squeezenet.s"
+	@echo "... squeezenet_c_api.o"
+	@echo "... squeezenet_c_api.i"
+	@echo "... squeezenet_c_api.s"
+	@echo "... squeezenetssd.o"
+	@echo "... squeezenetssd.i"
+	@echo "... squeezenetssd.s"
+	@echo "... yolact.o"
+	@echo "... yolact.i"
+	@echo "... yolact.s"
+	@echo "... yolov2.o"
+	@echo "... yolov2.i"
+	@echo "... yolov2.s"
+	@echo "... yolov3.o"
+	@echo "... yolov3.i"
+	@echo "... yolov3.s"
+	@echo "... yolov5.o"
+	@echo "... yolov5.i"
+	@echo "... yolov5.s"
+	@echo "... yolov5_pnnx.o"
+	@echo "... yolov5_pnnx.i"
+	@echo "... yolov5_pnnx.s"
+	@echo "... yolov7.o"
+	@echo "... yolov7.i"
+	@echo "... yolov7.s"
+	@echo "... yolov7_pnnx.o"
+	@echo "... yolov7_pnnx.i"
+	@echo "... yolov7_pnnx.s"
+	@echo "... yolox.o"
+	@echo "... yolox.i"
+	@echo "... yolox.s"
 .PHONY : help
 
 
